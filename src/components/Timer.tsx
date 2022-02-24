@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import EditIcon from './../assets/icons/edit.svg';
-import PlusIcon from './../assets/icons/plus.svg';
 import { ReactComponent as RemoveIcon } from './../assets/icons/remove.svg';
+import { ReactComponent as EditIcon } from './../assets/icons/edit.svg';
+import { ReactComponent as PlusIcon } from './../assets/icons/plus.svg';
 import './Timer.scss';
 import './../style/style.scss';
 
@@ -12,6 +12,7 @@ interface Timer {
     second: string,
     millisecond: string,
     isRunning: boolean,
+    isSet: boolean,
     id: string
 }
 
@@ -20,7 +21,6 @@ const uid = function () {
 }
 
 function Timer() {
-
     const initialTimer: Timer = {
         name: 'Timer',
         hour: '00',
@@ -28,6 +28,7 @@ function Timer() {
         second: '00',
         millisecond: '00',
         isRunning: false,
+        isSet: false,
         id: uid()
     }
 
@@ -41,9 +42,12 @@ function Timer() {
 
         let newTimers = [...timers];
         newTimers[idx] = {
-            ...timers[idx],
+            ... timers[idx],
             [event.target.name]: value
         };
+
+        const fullTime = Number(newTimers[idx].hour + newTimers[idx].minute + newTimers[idx].second + newTimers[idx].millisecond);
+        newTimers[idx].isSet = Boolean(fullTime);
 
         setTimers(newTimers);
     }
@@ -111,8 +115,10 @@ function Timer() {
                                             onClick={() => startPause(idx)}>
                                         {timer.isRunning ? 'pause' : 'start'}
                                     </button>
-                                    <button type="button" className="disabled"
-                                            onClick={() => resetTimer(idx)}> reset </button>
+                                    <button type="button" className={timer.isSet && timer.isRunning ? "primary" : "disabled"}
+                                            onClick={() => resetTimer(idx)}>
+                                        reset
+                                    </button>
                                 </span>
                             </form>
 
@@ -121,12 +127,12 @@ function Timer() {
                                      <input type="text" size={Number(timer.name.length)}
                                             onChange={(e) => handleChange(idx, e)}
                                             value={timer.name} name="name"/>
-                                    <img className="ml-sm" src={EditIcon} alt="Edit"/>
+                                     <EditIcon className="ml-sm"/>
                                 </span>
 
                                 <span className="timer__remove" onClick={() => removeTimer(idx)}>
                                     remove
-                                    <RemoveIcon className="ml-sm" fill='red' stroke='green'/>
+                                    <RemoveIcon className="ml-sm"/>
                                 </span>
                             </div>
                             <hr/>
@@ -137,7 +143,7 @@ function Timer() {
 
 
             <div onClick={addTimer} className="timer__new">
-                <img className="mr-sm" src={PlusIcon} alt="New"/>
+                <PlusIcon className="mr-sm"/>
                 add more timer
             </div>
         </div>
