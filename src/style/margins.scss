@@ -1,0 +1,43 @@
+@import './variables';
+
+.m{
+  &l{
+    &-sm{
+      margin-left: $margin-sm;
+    }
+
+    &-lg{
+      margin-left: $margin-lg;
+    }
+  }
+
+  &r{
+    &-sm{
+      margin-right: $margin-sm;
+    }
+
+    &-lg{
+      margin-right: $margin-lg;
+    }
+  }
+
+  &t{
+    &-sm{
+      margin-top: $margin-sm;
+    }
+
+    &-lg{
+      margin-top: $margin-lg;
+    }
+  }
+
+  &b{
+    &-sm{
+      margin-bottom: $margin-sm;
+    }
+
+    &-lg{
+      margin-bottom: $margin-lg;
+    }
+  }
+}
