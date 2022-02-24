@@ -1,0 +1,30 @@
+@import '../../src/style/variables';
+
+.timer {
+  &__form {
+    font-weight: 600;
+    color: $black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      font-weight: 600;
+      font-size: 120px;
+      line-height: 146px;
+      color: $black;
+      width: 150px;
+      font-family: Proxima Nova, sans-serif;
+    }
+  }
+
+  &__value {
+    font-size: 120px;
+    line-height: 146px;
+  }
+
+  &__text{
+    display: flex;
+    align-items: center;
+  }
+}
