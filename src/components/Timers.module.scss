@@ -1,0 +1,12 @@
+@import '../../src/style/variables';
+
+.new {
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

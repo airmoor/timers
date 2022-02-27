@@ -2,11 +2,8 @@ import React, {useEffect, useState} from "react";
 import {ReactComponent as RemoveIcon} from './../assets/icons/remove.svg';
 import {ReactComponent as EditIcon} from './../assets/icons/edit.svg';
 import {addAdditionalNulls} from "../utils/utils";
-import './Timer.scss';
+import styles from './Timer.module.scss';
 import './../style/style.scss';
-
-//todo add validation (min, sec)
-//todo fix cursor and auto set to the next
 
 interface Timer {
     name: string,
@@ -52,7 +49,7 @@ function Timer(props: TimerProps) {
             newTimer.isSet = Boolean(fullTime);
 
             setTimer(newTimer);
-       }
+        }
     }
 
     const tickFunction = (distance: number, newTimer: Timer) => {
@@ -139,8 +136,8 @@ function Timer(props: TimerProps) {
 
     return (
         <section className="mb-lg">
-            <form className="timer__form">
-                <span className="timer__value">
+            <form className={styles.form}>
+                <span className={styles.value}>
                     <input type="number" min="00" max="23" placeholder="00"
                            onChange={handleChange}
                            value={timer.hour} size={2}
@@ -177,7 +174,7 @@ function Timer(props: TimerProps) {
                 </span>
             </form>
 
-            <div className="timer__text">
+            <div className={styles.text}>
                 <span>
                      <input type="text" size={Number(timer.name.length)}
                             onChange={handleChange}
@@ -188,7 +185,7 @@ function Timer(props: TimerProps) {
 
                 {
                     !timer.isRunning &&
-                    <span className="timer__remove" onClick={() => removeTimer()}>
+                    <span className={styles.remove} onClick={removeTimer}>
                         remove
                         <RemoveIcon className="ml-sm"/>
                     </span>

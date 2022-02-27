@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {ReactComponent as PlusIcon} from './../assets/icons/edit.svg';
 import Timer from "./Timer";
 import {uid} from "../utils/utils";
+import styles from './Timers.module.scss';
 
 function Timers() {
 
@@ -15,7 +16,7 @@ function Timers() {
 
     const onRemove = (id: string) => {
         let newTimerIds = [...timerIds];
-        const newTimerIndex = newTimerIds.findIndex(timerId => timerId === id)
+        const newTimerIndex = newTimerIds.findIndex(timerId => timerId === id);
         newTimerIds.splice(newTimerIndex, 1);
 
         setTimerIds(newTimerIds);
@@ -24,10 +25,10 @@ function Timers() {
     return (
         <>
             {timerIds.map((id) => {
-                return <Timer onRemove={() => onRemove(id)} key={id} />
+                return <Timer onRemove={() => onRemove(id)} key={id}/>
             })}
 
-            <div onClick={addTimer} className="timer__new">
+            <div onClick={addTimer} className={styles.new}>
                 <PlusIcon className="mr-sm"/>
                 add more timer
             </div>

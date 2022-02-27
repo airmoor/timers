@@ -1,0 +1,58 @@
+@import '../../src/style/variables';
+
+.form {
+  font-weight: 600;
+  color: $black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    font-weight: 600;
+    font-size: 120px;
+    line-height: 146px;
+    color: $black;
+    font-family: Proxima Nova, sans-serif;
+    width: auto;
+  }
+
+  input[type=number] {
+    width: 150px;
+  }
+}
+
+.value {
+  font-size: 120px;
+  line-height: 146px;
+  display: flex;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+.remove {
+  color: $error;
+  display: flex;
+  align-items: center;
+
+  path {
+    stroke: $error;
+  }
+
+  &:hover {
+    color: $error-hover;
+    cursor: pointer;
+
+    path {
+      stroke: $error-hover;
+    }
+  }
+}
